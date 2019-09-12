@@ -12,12 +12,13 @@ use Exception;
  */
 trait Curl
 {
+
     /**
      * @param string     $path
      * @param string     $method
      * @param array|null $params
      * @param int        $port
-     * @return array|null
+     * @return string
      * @throws Exception
      */
     public function request(string $path, string $method, ?array $params = null, int $port = 80)
@@ -44,10 +45,10 @@ trait Curl
 
     /**
      * @param $response
-     * @return mixed
+     * @return string
      * @throws Exception
      */
-    private function validateData($response)
+    private function validateData($response): string
     {
         if (empty($response)) {
             throw new Exception("curl could not reach the server.");

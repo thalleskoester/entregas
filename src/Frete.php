@@ -88,9 +88,10 @@ class Frete
      * @param string $value
      * @return string
      */
-    public function getTypesIndex(string $value): string
+    public function getTypesIndex(string $value): ?string
     {
-        return array_search($value, $this->methods);
+        $data = array_search($value, $this->methods);
+        return ($data ? $data : null);
     }
 
     /**
@@ -108,6 +109,7 @@ class Frete
 
         $fretes = $this->xml2array($data)['Servicos'][0]['cServico'];
 
+        $return = [];
         foreach ($fretes as $frete) {
             $return[] = [
                 'codigo' => (int)$frete['Codigo'][0],
