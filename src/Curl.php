@@ -24,6 +24,11 @@ trait Curl
     public function request(string $path, string $method, ?array $params = null, int $port = 80)
     {
         $conn = curl_init();
+
+        if (!$conn) {
+            throw new Exception('Erro na inicialízação do cURL.');
+        }
+
         curl_setopt($conn, CURLOPT_URL, $path);
         curl_setopt($conn, CURLOPT_PORT, $port);
         curl_setopt($conn, CURLOPT_TIMEOUT, 30);
