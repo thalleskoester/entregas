@@ -131,4 +131,4 @@ Obrigado
 
 ## Licensa
 
-The MIT License (MIT). Por favor veja [Arquivo de Licensa](https://github.com/thallesdella/entregas/blob/master/LICENSE) for more information.
+Licensa MIT (MIT). Por favor veja [Arquivo de Licensa](https://github.com/thallesdella/entregas/blob/master/LICENSE) para mais informações.
