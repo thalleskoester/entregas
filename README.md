@@ -21,13 +21,13 @@ Entregas Library vem na intenção de facilitar a consulta de serviços relacion
 
 ## Instalação
 
-Uploader is available via Composer:
+Entregas esta disponível atraves do composer:
 
 ```bash
 "thallesdella/entregas": "^1.0"
 ```
 
-or run
+Ou execute
 
 ```bash
 composer require thallesdella/entregas
@@ -131,4 +131,4 @@ Obrigado
 
 ## Licensa
 
-The MIT License (MIT). Por favor veja [Arquivo de Licensa](https://github.com/thallesdella/entregas/blob/master/LICENSE) for more information.
+Licensa MIT (MIT). Por favor veja [Arquivo de Licensa](https://github.com/thallesdella/entregas/blob/master/LICENSE) para mais informações.
