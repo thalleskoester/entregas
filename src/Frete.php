@@ -169,14 +169,12 @@ class Frete
      */
     private function setOptions(array $options): void
     {
-        $this->options = $options;
-        $this->options['senha'] = ($this->options['senha'] ?? '');
-        $this->options['empresa'] = ($this->options['empresa'] ?? '');
-        $this->options['valor_declarado'] = (!empty($this->options['valor_declarado'])
-            ? number_format($this->options['valor_declarado'], '2', ',', '') : 0);
-        $this->options['mao_propria'] = (isset($this->options['mao_propria']) && $this->options['mao_propria']
-            ? 'S' : 'N');
-        $this->options['aviso_recebimento'] = (isset($this->options['aviso_recebimento']) && $this->options['aviso_recebimento']
+        $this->options['senha'] = ($options['senha'] ?? '');
+        $this->options['empresa'] = ($options['empresa'] ?? '');
+        $this->options['mao_propria'] = (isset($options['mao_propria']) && $options['mao_propria'] ? 'S' : 'N');
+        $this->options['valor_declarado'] = (!empty($options['valor_declarado'])
+            ? number_format($options['valor_declarado'], '2', ',', '') : 0);
+        $this->options['aviso_recebimento'] = (isset($options['aviso_recebimento']) && $options['aviso_recebimento']
             ? 'S' : 'N');
     }
 
