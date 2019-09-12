@@ -25,7 +25,7 @@ trait Curl
     {
         $conn = curl_init();
 
-        if (!$conn) {
+        if ($conn === false) {
             throw new Exception('Erro na inicialízação do cURL.');
         }
 
