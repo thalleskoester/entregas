@@ -169,10 +169,9 @@ class Frete
      */
     private function setOptions(array $options): void
     {
-        foreach ($options as $key => $value) {
-            $this->options[$key] = $value;
-        }
-
+        $this->options = $options;
+        $this->options['senha'] = ($this->options['senha'] ?? '');
+        $this->options['empresa'] = ($this->options['empresa'] ?? '');
         $this->options['valor_declarado'] = (!empty($this->options['valor_declarado'])
             ? number_format($this->options['valor_declarado'], '2', ',', '') : 0);
         $this->options['mao_propria'] = (isset($this->options['mao_propria']) && $this->options['mao_propria']
@@ -188,8 +187,8 @@ class Frete
     {
         $payload = [
             'nCdServico' => $this->types,
-            'nCdEmpresa' => ($this->options['empresa'] ?? ''),
-            'sDsSenha' => ($this->options['senha'] ?? ''),
+            'nCdEmpresa' => $this->options['empresa'],
+            'sDsSenha' => $this->options['senha'],
             'sCepOrigem' => $this->zipcode['origem'],
             'sCepDestino' => $this->zipcode['destino'],
             'nVlPeso' => $this->item['peso'],
