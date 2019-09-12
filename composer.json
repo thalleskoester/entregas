@@ -1,0 +1,36 @@
+{
+  "name": "thallesdella/entregas",
+  "description": "Biblioteca para simplificar operações em relação a entregas",
+  "keywords": [
+    "Correios",
+    "Frete",
+    "CEP",
+    "Rastreio",
+    "Encomenda",
+    "PHP",
+    "Web Service",
+    "API",
+    "Biblioteca",
+    "Brasil",
+    "ViaCep",
+    "Entrega"
+  ],
+  "homepage": "http://www.bunana.com.br",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Thalles D. Koester",
+      "email": "thallesdella@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.1",
+    "ext-curl": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "ThallesDKoester\\Entregas\\": "src"
+    }
+  }
+}
