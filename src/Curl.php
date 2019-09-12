@@ -21,7 +21,7 @@ trait Curl
      * @return string
      * @throws Exception
      */
-    public function request(string $path, string $method, ?array $params = null, int $port = 80)
+    private function request(string $path, string $method, ?array $params = null, int $port = 80)
     {
         $conn = curl_init();
 
