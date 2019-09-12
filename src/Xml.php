@@ -16,7 +16,7 @@ trait Xml
      * @param string $xml
      * @return array
      */
-    public function xml2array(string $xml): array
+    private function xml2array(string $xml): array
     {
         $sxi = new SimpleXMLIterator($xml);
         return self::sxiToArray($sxi);
