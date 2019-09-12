@@ -30,10 +30,11 @@ trait Curl
         curl_setopt($conn, CURLOPT_CUSTOMREQUEST, $method);
         curl_setopt($conn, CURLOPT_FORBID_REUSE, 1);
 
-        if (!empty($params) && count($params) > 0)
+        if (!empty($params) && count($params) > 0) {
             curl_setopt($conn, CURLOPT_POSTFIELDS, http_build_query($params));
-        else
+        } else {
             curl_setopt($conn, CURLOPT_POSTFIELDS, null);
+        }
 
         $data = $this->validateData(curl_exec($conn));
         curl_close($conn);
