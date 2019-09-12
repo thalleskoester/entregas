@@ -110,10 +110,6 @@ if (empty($data)) {
 #### Rastreio:
 Em breve
 
-### Outros
-
-Você também conta com classes para os endpoints de carteiras e assinaturas, toda documentação de uso com exemplos práticos está disponível na pasta examples desta biblioteca. Por favor, consulte lá.
-
 ## Contribuindo
 
 Por favor veja [CONTRIBUINDO](https://github.com/thallesdella/entregas/blob/master/CONTRIBUTING.md) para detalhes.
