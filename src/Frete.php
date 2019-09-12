@@ -157,7 +157,11 @@ class Frete
      */
     private function setItem(array $item): void
     {
-        $this->item = $item;
+        $this->item['peso'] = floatval($item['peso'] / 1000);
+        $this->item['altura'] = ($item['altura'] > 2 ? $item['altura'] : 2);
+        $this->item['comprimento'] = ($item['comprimento'] > 11 ? $item['comprimento'] : 11);
+        $this->item['largura'] = ($item['largura'] > 16 ? $item['largura'] : 16);
+        $this->item['diametro'] = ($item['diametro'] ?? 0);
     }
 
     /**
@@ -168,6 +172,13 @@ class Frete
         foreach ($options as $key => $value) {
             $this->options[$key] = $value;
         }
+
+        $this->options['valor_declarado'] = (!empty($this->options['valor_declarado'])
+            ? number_format($this->options['valor_declarado'], '2', ',', '') : 0);
+        $this->options['mao_propria'] = (isset($this->options['mao_propria']) && $this->options['mao_propria']
+            ? 'S' : 'N');
+        $this->options['aviso_recebimento'] = (isset($this->options['aviso_recebimento']) && $this->options['aviso_recebimento']
+            ? 'S' : 'N');
     }
 
     /**
@@ -175,13 +186,6 @@ class Frete
      */
     private function generatePayload(): string
     {
-        $this->options['valor_declarado'] = (!empty($this->options['valor_declarado'])
-            ? number_format($this->options['valor_declarado'], '2', ',', '') : 0);
-        $this->item['peso'] = floatval($this->item['peso'] / 1000);
-        $this->item['altura'] = ($this->item['altura'] > 2 ? $this->item['altura'] : 2);
-        $this->item['comprimento'] = ($this->item['comprimento'] > 11 ? $this->item['comprimento'] : 11);
-        $this->item['largura'] = ($this->item['largura'] > 16 ? $this->item['largura'] : 16);
-
         $payload = [
             'nCdServico' => $this->types,
             'nCdEmpresa' => ($this->options['empresa'] ?? ''),
@@ -193,12 +197,10 @@ class Frete
             'nVlComprimento' => $this->item['comprimento'],
             'nVlAltura' => $this->item['altura'],
             'nVlLargura' => $this->item['largura'],
-            'nVlDiametro' => ($this->item['diametro'] ?? 0),
-            'sCdMaoPropria' => (isset($this->options['mao_propria'])
-            && $this->options['mao_propria'] ? 'S' : 'N'),
-            'nVlValorDeclarado' => ($this->options['valor_declarado'] ?? 0),
-            'sCdAvisoRecebimento' => (isset($this->options['aviso_recebimento'])
-            && $this->options['aviso_recebimento'] ? 'S' : 'N'),
+            'nVlDiametro' => $this->item['diametro'],
+            'sCdMaoPropria' => $this->options['mao_propria'],
+            'nVlValorDeclarado' => $this->options['valor_declarado'],
+            'sCdAvisoRecebimento' => $this->options['aviso_recebimento'],
             'sDtCalculo' => date('d/m/Y'),
             'StrRetorno' => 'xml'
         ];
