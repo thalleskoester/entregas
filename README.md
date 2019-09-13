@@ -7,7 +7,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 [![Build](https://img.shields.io/scrutinizer/build/g/thallesdella/entregas.svg?style=flat-square)](https://scrutinizer-ci.com/g/thallesdella/entregas)
 [![Quality Score](https://img.shields.io/scrutinizer/g/thallesdella/entregas.svg?style=flat-square)](https://scrutinizer-ci.com/g/thallesdella/entregas)
-[![Total Downloads](https://img.shields.io/packagist/dt/thallesdella/entregas.svg?style=flat-square)](https://packagist.org/packages/cthallesdella/entregas)
+[![Total Downloads](https://img.shields.io/packagist/dt/thallesdella/entregas.svg?style=flat-square)](https://packagist.org/packages/thallesdella/entregas)
 
 
 Entregas Library vem na intenção de facilitar a consulta de serviços relacionados a entregas, como consulta de CEP, calculo de frete... 
