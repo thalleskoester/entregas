@@ -25,23 +25,31 @@ class Entregas
         return new Cep($cep);
     }
 
+    /**
+     * @param array      $zipcode
+     * @param array      $methods
+     * @param array      $item
+     * @param array|null $options
+     * @return Frete|null
+     */
     public static function frete(array $zipcode, array $methods, array $item, ?array $options = null): ?Frete
     {
         try {
-            $frete = new Frete($zipcode, $methods, $item, $options);
+            return new Frete($zipcode, $methods, $item, $options);
         } catch (Exception $e) {
             trigger_error($e, E_USER_WARNING);
-            $frete = null;
-        } finally {
-            return $frete;
+            return null;
         }
     }
 
+
     /**
+     * @param string     $code
+     * @param array|null $options
      * @return Rastreio
      */
-    public static function rastreio(): Rastreio
+    public static function rastreio(string $code, ?array $options = []): Rastreio
     {
-        return new Rastreio();
+        return new Rastreio($code, $options);
     }
 }

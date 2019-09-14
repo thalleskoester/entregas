@@ -58,10 +58,7 @@ class Frete
         $this->setZipcode($zipcode);
         $this->setTypes($types);
         $this->setItem($item);
-
-        if ($options) {
-            $this->setOptions($options);
-        }
+        $this->setOptions($options);
     }
 
     /**
@@ -162,12 +159,13 @@ class Frete
         $this->item['comprimento'] = ($item['comprimento'] > 11 ? $item['comprimento'] : 11);
         $this->item['largura'] = ($item['largura'] > 16 ? $item['largura'] : 16);
         $this->item['diametro'] = ($item['diametro'] ?? 0);
+        $this->item['formato'] = ($this->item['formato'] ?? Entregas::FRETE_FORMATO_CAIXA);
     }
 
     /**
      * @param array $options
      */
-    private function setOptions(array $options): void
+    private function setOptions(?array $options): void
     {
         $this->options['senha'] = ($options['senha'] ?? '');
         $this->options['empresa'] = ($options['empresa'] ?? '');

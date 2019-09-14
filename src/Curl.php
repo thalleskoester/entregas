@@ -21,7 +21,7 @@ trait Curl
      * @return string
      * @throws Exception
      */
-    private function request(string $path, string $method, ?array $params = null, int $port = 80)
+    private function request(string $path, string $method, ?array $params = null, ?int $port = null): string
     {
         $conn = curl_init();
 
@@ -30,11 +30,14 @@ trait Curl
         }
 
         curl_setopt($conn, CURLOPT_URL, $path);
-        curl_setopt($conn, CURLOPT_PORT, $port);
         curl_setopt($conn, CURLOPT_TIMEOUT, 30);
-        curl_setopt($conn, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($conn, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($conn, CURLOPT_CUSTOMREQUEST, $method);
-        curl_setopt($conn, CURLOPT_FORBID_REUSE, 1);
+        curl_setopt($conn, CURLOPT_FORBID_REUSE, true);
+        curl_setopt($conn, CURLOPT_HTTPHEADER, [
+            "cache-control: no-cache",
+            "content-type: application/x-www-form-urlencoded"
+        ]);
 
         if (!empty($params) && count($params) > 0) {
             curl_setopt($conn, CURLOPT_POSTFIELDS, http_build_query($params));
@@ -42,10 +45,19 @@ trait Curl
             curl_setopt($conn, CURLOPT_POSTFIELDS, null);
         }
 
-        $data = $this->validateData(curl_exec($conn));
+        if ($port) {
+            curl_setopt($conn, CURLOPT_PORT, $port);
+        }
+
+        $data = curl_exec($conn);
+        $err = curl_error($conn);
         curl_close($conn);
 
-        return $data;
+        if ($err) {
+            throw new Exception($err);
+        } else {
+            return $this->validateData($data);
+        }
     }
 
     /**
