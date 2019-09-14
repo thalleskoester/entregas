@@ -35,7 +35,7 @@ class Rastreio
     {
         $this->setCode($code);
 
-        if ($options) {
+        if (!empty($options)) {
             $this->setOptions($options);
         }
     }
