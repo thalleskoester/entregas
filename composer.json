@@ -27,7 +27,8 @@
   "require": {
     "php": "^7.1",
     "ext-curl": "*",
-    "ext-json": "*"
+    "ext-json": "*",
+    "sunra/php-simple-html-dom-parser": "1.5.2"
   },
   "autoload": {
     "psr-4": {
