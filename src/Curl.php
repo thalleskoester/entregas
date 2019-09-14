@@ -45,7 +45,7 @@ trait Curl
             curl_setopt($conn, CURLOPT_POSTFIELDS, null);
         }
 
-        if ($port) {
+        if ($port !== null) {
             curl_setopt($conn, CURLOPT_PORT, $port);
         }
 
